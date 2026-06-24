@@ -1,3 +1,5 @@
+package c02_principiante;
+
 public class DataTypes {
     public static void main(String[] args) {
         // PRIMITIVOS
