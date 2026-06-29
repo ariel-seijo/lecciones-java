@@ -103,16 +103,12 @@ public class LoopsExercises {
 
         // 10. Crea un programa que calcule el factorial de un número dado.
 
-        int factorial = 0;
+        int factorial = 1;
 
-        for (int inicial = 5; inicial == 0; inicial-- ) {
-            if ((inicial-1) > 0) {
-                factorial += inicial * inicial-1;
-            }
-            break;
+        for (int inicial = 5; inicial > 0; inicial-- ) {
+            factorial *= inicial;
         }
 
         System.out.println("Factorial: " + factorial);
-
     }
 }
