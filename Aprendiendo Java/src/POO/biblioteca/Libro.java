@@ -8,12 +8,11 @@ public class Libro {
     int anioPublicacion;
     boolean prestado;
 
-    public Libro(String titulo, String autor, String isbn, int anioPublicacion, boolean prestado) {
+    public Libro(String titulo, String autor, String isbn, int anioPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.anioPublicacion = anioPublicacion;
-        this.prestado = prestado;
     }
 
     public void prestar() {
