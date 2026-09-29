@@ -4,30 +4,30 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Autor autor1 = new Autor(
+                "Patrick",
+                "Rothfuss"
+        );
+
         Libro libro1 = new Libro(
                 "El Nombre del Viento",
-                "Patrick Rothfuss",
+                autor1,
                 "151646549684",
                 2007
         );
 
         Libro libro2 = new Libro(
                 "El Temor de Un Hombre Sabio",
-                "Patrick Rothfuss",
+                autor1,
                 "1516465497894",
                 2013
         );
 
         Libro libro3 = new Libro(
                 "Las puertas de piedra",
-                "Patrick Rothfuss",
+                autor1,
                 "1516465497724",
                 2027
-        );
-
-        Autor autor1 = new Autor(
-                "Patrick",
-                "Rothfuss"
         );
 
         autor1.addBook(libro1);

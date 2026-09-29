@@ -3,12 +3,12 @@ package POO.biblioteca;
 public class Libro {
 
     private String titulo;
-    private String autor;
+    private Autor autor;
     private String isbn;
     private int anioPublicacion;
     private boolean prestado;
 
-    public Libro(String titulo, String autor, String isbn, int anioPublicacion) {
+    public Libro(String titulo, Autor autor, String isbn, int anioPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
@@ -27,7 +27,7 @@ public class Libro {
         return titulo;
     }
 
-    public String getAutor() {
+    public Autor getAutor() {
         return autor;
     }
 
