@@ -2,17 +2,37 @@ package POO.biblioteca;
 
 public class Libro {
 
-    String titulo;
-    String autor;
-    String isbn;
-    int anioPublicacion;
-    boolean prestado;
+    private String titulo;
+    private String autor;
+    private String isbn;
+    private int anioPublicacion;
+    private boolean prestado;
 
     public Libro(String titulo, String autor, String isbn, int anioPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.anioPublicacion = anioPublicacion;
+    }
+
+    public int getAnioPublicacion() {
+        return anioPublicacion;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public boolean isPrestado() {
+        return prestado;
     }
 
     public void prestar() {

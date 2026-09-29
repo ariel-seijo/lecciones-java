@@ -1,5 +1,4 @@
 package POO.biblioteca;
-import java.util.ArrayList;
 
 public class Main {
 
@@ -19,20 +18,30 @@ public class Main {
                 2013
         );
 
-        ArrayList<Libro> libros = new ArrayList<>();
-        libros.add(libro1);
-        libros.add(libro2);
+        Libro libro3 = new Libro(
+                "Las puertas de piedra",
+                "Patrick Rothfuss",
+                "1516465497724",
+                2027
+        );
+
+        Autor autor1 = new Autor(
+                "Patrick",
+                "Rothfuss"
+        );
+
+        autor1.addBook(libro1);
+        autor1.addBook(libro2);
+        autor1.addBook(libro3);
+
+        for (Libro libro: autor1.getLibros()) {
+            System.out.println(libro.getTitulo());
+        }
 
         libro1.prestar();
+        System.out.println(libro1.isPrestado());
+        libro1.prestar();
 
-        for (Libro libro: libros) {
-            System.out.println("Nombre del libro: " + libro.titulo);
-            if (libro.prestado) {
-                System.out.println("Estado del libro: prestado.");
-            } else {
-                System.out.println("Estado del libro: disponible.");
-            }
-        }
     }
 }
 
