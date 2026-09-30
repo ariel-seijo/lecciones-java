@@ -6,4 +6,10 @@ public class CuentaAhorro extends Cuenta {
         super(duenio, cvu, alias);
     }
 
+    @Override
+    public void retirar(double monto) {
+        if (this.consultarSaldo()>=monto) {
+            this.restarSaldo(monto);
+        }
+    }
 }

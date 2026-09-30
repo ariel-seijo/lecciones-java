@@ -1,6 +1,6 @@
 package POO.herencia;
 
-public class Cuenta {
+public abstract class Cuenta {
 
     private String duenio;
     private String cvu;
@@ -18,11 +18,7 @@ public class Cuenta {
         saldo += monto;
     }
 
-    public void retirar(double monto) {
-        if (saldo >= monto) {
-            saldo -= monto;
-        }
-    }
+    public abstract void retirar(double monto);
 
     public double consultarSaldo() {
         return saldo;

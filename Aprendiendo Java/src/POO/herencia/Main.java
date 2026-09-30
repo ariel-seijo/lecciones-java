@@ -3,31 +3,25 @@ package POO.herencia;
 public class Main {
 
     public static void main(String[] args) {
-        Cuenta cuentaa1 = new CuentaAhorro(
+        Cuenta cuenta1 = new CuentaAhorro(
                 "Ariel",
                 "566565466458",
                 "arielo.mp"
         );
 
-        Cuenta cuentac1 = new CuentaCorriente(
+        Cuenta cuenta2 = new CuentaCorriente(
                 "Ariel",
-                "566565466458",
-                "arielo.mp"
+                "512313212312",
+                "arielo.mpa"
         );
 
-        System.out.println(cuentaa1.consultarSaldo());
-        cuentaa1.depositar(100);
-        System.out.println(cuentaa1.consultarSaldo());
-        cuentaa1.retirar(300);
-        System.out.println(cuentaa1.consultarSaldo());
+        procesarRetiro(cuenta1);
+        procesarRetiro(cuenta2);
 
-        System.out.println(cuentac1.consultarSaldo());
-        cuentac1.depositar(100);
-        System.out.println(cuentac1.consultarSaldo());
-        cuentac1.retirar(300);
-        System.out.println(cuentac1.consultarSaldo());
+    }
 
-
+    public static void procesarRetiro(Cuenta cuenta) {
+        cuenta.retirar(300);
     }
 
 }
