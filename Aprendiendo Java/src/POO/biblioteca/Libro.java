@@ -35,12 +35,12 @@ public class Libro {
         return prestado;
     }
 
-    public void prestar() {
+    public boolean prestar() {
         if (!prestado) {
             prestado = true;
-            System.out.println("El libro ha sido prestado correctamente.");
+            return true;
         } else {
-            System.out.println("El libro no se encuentra disponible.");
+            return false;
         }
     }
 
