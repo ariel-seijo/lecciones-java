@@ -13,6 +13,7 @@ public class CuentaCorriente extends Cuenta {
     public void retirar(double monto) {
         if ((this.consultarSaldo() + this.limiteDescubierto) >= monto) {
             restarSaldo(monto);
+            agregarMovimiento("retiro", monto);
         }
     }
 

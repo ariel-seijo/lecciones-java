@@ -10,6 +10,7 @@ public class CuentaAhorro extends Cuenta {
     public void retirar(double monto) {
         if (this.consultarSaldo()>=monto) {
             this.restarSaldo(monto);
+            agregarMovimiento("retiro", monto);
         }
     }
 }
