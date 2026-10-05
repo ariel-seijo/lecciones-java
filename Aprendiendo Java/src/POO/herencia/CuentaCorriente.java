@@ -17,4 +17,15 @@ public class CuentaCorriente extends Cuenta {
         }
     }
 
+    @Override
+    public boolean transferir(double monto, Cuenta destino) {
+        if ((this.consultarSaldo() + this.limiteDescubierto) >= monto) {
+            restarSaldo(monto);
+            destino.depositar(monto);
+            agregarMovimiento("transferencia", monto);
+            return true;
+        }
+        return false;
+    }
+
 }

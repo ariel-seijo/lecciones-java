@@ -13,4 +13,16 @@ public class CuentaAhorro extends Cuenta {
             agregarMovimiento("retiro", monto);
         }
     }
+
+    @Override
+    public boolean transferir(double monto, Cuenta destino) {
+        if (this.consultarSaldo()>=monto) {
+            this.restarSaldo(monto);
+            destino.depositar(monto);
+            agregarMovimiento("transferencia", monto);
+            return true;
+        }
+        return false;
+    }
+
 }

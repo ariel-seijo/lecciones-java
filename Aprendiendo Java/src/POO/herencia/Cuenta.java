@@ -2,7 +2,7 @@ package POO.herencia;
 
 import java.util.ArrayList;
 
-public abstract class Cuenta {
+public abstract class Cuenta implements Transferible {
 
     private String duenio;
     private String cvu;
@@ -17,6 +17,9 @@ public abstract class Cuenta {
         this.saldo = 0;
         this.movimientos = new ArrayList<Movimiento>();
     }
+
+    @Override
+    public abstract boolean transferir(double monto, Cuenta destino);
 
     public ArrayList<Movimiento> getMovimientos() {
         return new ArrayList<>(movimientos);
