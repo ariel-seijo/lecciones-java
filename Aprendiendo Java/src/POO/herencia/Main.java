@@ -10,13 +10,19 @@ public class Main {
         );
 
         Cuenta cuenta2 = new CuentaCorriente(
-                "Ariel",
+                "Mateo",
                 "512313212312",
                 "arielo.mpa"
         );
 
-        procesarRetiro(cuenta1);
-        procesarRetiro(cuenta2);
+        Banco banco = new Banco();
+
+        banco.registrarCuenta(cuenta1);
+        banco.registrarCuenta(cuenta1);
+        banco.registrarCuenta(cuenta2);
+        System.out.println(banco.buscarCuentaPorCvu(cuenta1.getCvu()));
+        System.out.println(banco.eliminarCuenta(cuenta2.getCvu()));
+        System.out.println(banco.buscarCuentaPorCvu(cuenta2.getCvu()));
 
     }
 

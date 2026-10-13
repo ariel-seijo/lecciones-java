@@ -48,4 +48,8 @@ public abstract class Cuenta implements Transferible {
     public String getCvu() {
         return cvu;
     }
+
+    public String getDuenio() {
+        return duenio;
+    }
 }

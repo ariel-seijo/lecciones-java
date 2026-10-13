@@ -13,9 +13,11 @@ public class Banco {
     public boolean registrarCuenta(Cuenta cuenta) {
         String cvu = cuenta.getCvu();
         if (cuentasPorCvu.containsKey(cvu)) {
+            System.out.println("La cuenta no se pudo registrar.");
             return false;
         } else {
             cuentasPorCvu.put(cvu, cuenta);
+            System.out.println("Se ha registrado la cuenta de: "+cuenta.getDuenio());
             return true;
         }
     }
