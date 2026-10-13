@@ -1,6 +1,7 @@
 package POO.herencia;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Cuenta implements Transferible {
 
@@ -8,20 +9,20 @@ public abstract class Cuenta implements Transferible {
     private String cvu;
     private String alias;
     private double saldo;
-    private ArrayList<Movimiento> movimientos;
+    private List<Movimiento> movimientos;
 
     public Cuenta(String duenio, String cvu, String alias) {
         this.duenio = duenio;
         this.cvu = cvu;
         this.alias = alias;
         this.saldo = 0;
-        this.movimientos = new ArrayList<Movimiento>();
+        this.movimientos = new ArrayList<>();
     }
 
     @Override
     public abstract boolean transferir(double monto, Cuenta destino);
 
-    public ArrayList<Movimiento> getMovimientos() {
+    public List<Movimiento> getMovimientos() {
         return new ArrayList<>(movimientos);
     }
 
@@ -44,7 +45,7 @@ public abstract class Cuenta implements Transferible {
         saldo -= monto;
     }
 
-    public boolean transferir(Cuenta cuentaDestino) {
-        return true;
+    public String getCvu() {
+        return cvu;
     }
 }
