@@ -6,15 +6,19 @@ public class CuentaCorriente extends Cuenta {
 
     public CuentaCorriente(String duenio, String cvu, String alias) {
         super(duenio, cvu, alias);
-        this.limiteDescubierto = 500.00;
+        this.limiteDescubierto = 5000.00;
     }
 
     @Override
     public void retirar(double monto) {
-        if ((this.consultarSaldo() + this.limiteDescubierto) >= monto) {
-            restarSaldo(monto);
-            agregarMovimiento("retiro", monto);
+        if (monto <= 0) {
+            throw new IllegalArgumentException("El monto debe ser positivo.");
         }
+        if ((this.consultarSaldo() + this.limiteDescubierto) < monto) {
+            throw new SaldoInsuficienteException("Saldo insuficiente.");
+        }
+        restarSaldo(monto);
+        agregarMovimiento("retiro", monto);
     }
 
     @Override
