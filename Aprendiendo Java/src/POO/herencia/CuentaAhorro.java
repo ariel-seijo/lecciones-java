@@ -14,7 +14,7 @@ public class CuentaAhorro extends Cuenta {
             throw new SaldoInsuficienteException("Saldo insuficiente.");
         }
         this.restarSaldo(monto);
-        agregarMovimiento("retiro", monto);
+        agregarMovimiento(TipoMovimiento.RETIRO, monto);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class CuentaAhorro extends Cuenta {
         if (this.consultarSaldo()>=monto) {
             this.restarSaldo(monto);
             destino.depositar(monto);
-            agregarMovimiento("transferencia", monto);
+            agregarMovimiento(TipoMovimiento.TRANSFERENCIA, monto);
             return true;
         }
         return false;

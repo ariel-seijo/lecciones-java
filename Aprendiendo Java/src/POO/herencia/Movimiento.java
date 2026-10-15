@@ -2,15 +2,15 @@ package POO.herencia;
 
 public class Movimiento {
 
-    private String tipo;
+    private TipoMovimiento tipo;
     private double monto;
 
-    public Movimiento(String tipo, double monto) {
+    public Movimiento(TipoMovimiento tipo, double monto) {
         this.tipo = tipo;
         this.monto = monto;
     }
 
-    public String getTipo() {
+    public TipoMovimiento getTipo() {
         return tipo;
     }
 

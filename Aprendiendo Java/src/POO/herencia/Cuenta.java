@@ -26,13 +26,13 @@ public abstract class Cuenta implements Transferible {
         return new ArrayList<>(movimientos);
     }
 
-    protected void agregarMovimiento(String tipo, double monto) {
+    protected void agregarMovimiento(TipoMovimiento tipo, double monto) {
         movimientos.add(new Movimiento(tipo, monto));
     }
 
     public void depositar(double monto) {
         saldo += monto;
-        agregarMovimiento("deposito", monto);
+        agregarMovimiento(TipoMovimiento.DEPOSITO, monto);
     }
 
     public abstract void retirar(double monto);

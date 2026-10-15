@@ -18,7 +18,7 @@ public class CuentaCorriente extends Cuenta {
             throw new SaldoInsuficienteException("Saldo insuficiente.");
         }
         restarSaldo(monto);
-        agregarMovimiento("retiro", monto);
+        agregarMovimiento(TipoMovimiento.RETIRO, monto);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class CuentaCorriente extends Cuenta {
         if ((this.consultarSaldo() + this.limiteDescubierto) >= monto) {
             restarSaldo(monto);
             destino.depositar(monto);
-            agregarMovimiento("transferencia", monto);
+            agregarMovimiento(TipoMovimiento.TRANSFERENCIA, monto);
             return true;
         }
         return false;

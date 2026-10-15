@@ -50,6 +50,8 @@ public class Main {
         }
         System.out.println(cuenta2.consultarSaldo());
 
+        System.out.println(TipoMovimiento.RETIRO.getDescripcion());
+
     }
 
     public static void procesarRetiro(Cuenta cuenta) {
