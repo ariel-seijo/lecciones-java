@@ -18,7 +18,11 @@ public class Main {
         Banco banco = new Banco();
 
         banco.registrarCuenta(cuenta1);
-        banco.registrarCuenta(cuenta1);
+        try {
+            banco.registrarCuenta(cuenta1);
+        } catch (CvuDuplicadoException e) {
+            System.out.println("No se pudo registrar la cuenta: " + e.getMessage());
+        }
         banco.registrarCuenta(cuenta2);
 
         cuenta1.depositar(10000);
