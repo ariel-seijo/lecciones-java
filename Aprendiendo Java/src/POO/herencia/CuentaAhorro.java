@@ -8,10 +8,13 @@ public class CuentaAhorro extends Cuenta {
 
     @Override
     public void retirar(double monto) {
-        if (this.consultarSaldo()>=monto) {
-            this.restarSaldo(monto);
-            agregarMovimiento("retiro", monto);
+        if (monto <= 0) {
+            throw new IllegalArgumentException("El monto debe ser positivo.");
+        } else if (this.consultarSaldo()<monto) {
+            throw new SaldoInsuficienteException("Saldo insuficiente.");
         }
+        this.restarSaldo(monto);
+        agregarMovimiento("retiro", monto);
     }
 
     @Override

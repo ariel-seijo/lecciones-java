@@ -20,9 +20,16 @@ public class Main {
         banco.registrarCuenta(cuenta1);
         banco.registrarCuenta(cuenta1);
         banco.registrarCuenta(cuenta2);
-        System.out.println(banco.buscarCuentaPorCvu(cuenta1.getCvu()));
-        System.out.println(banco.eliminarCuenta(cuenta2.getCvu()));
-        System.out.println(banco.buscarCuentaPorCvu(cuenta2.getCvu()));
+
+        cuenta1.depositar(10000);
+        System.out.println(cuenta1.consultarSaldo());
+
+        cuenta1.retirar(5000);
+        System.out.println(cuenta1.consultarSaldo());
+
+        cuenta1.retirar(6000);
+        System.out.println(cuenta1.consultarSaldo());
+
 
     }
 
