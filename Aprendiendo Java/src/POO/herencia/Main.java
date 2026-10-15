@@ -52,6 +52,12 @@ public class Main {
 
         System.out.println(TipoMovimiento.RETIRO.getDescripcion());
 
+        System.out.println(cuenta1.getMovimientos().getLast().getFechaHora());
+
+        for (Movimiento movimiento: cuenta1.getMovimientos()) {
+            System.out.println(movimiento);
+        }
+
     }
 
     public static void procesarRetiro(Cuenta cuenta) {
