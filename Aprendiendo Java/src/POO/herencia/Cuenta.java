@@ -52,4 +52,21 @@ public abstract class Cuenta implements Transferible {
     public String getDuenio() {
         return duenio;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Cuenta cuenta2) {
+            return this.cvu.equals(cuenta2.getCvu());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return cvu.hashCode();
+    }
+
 }

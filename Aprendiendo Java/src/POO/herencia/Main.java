@@ -1,5 +1,8 @@
 package POO.herencia;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -15,6 +18,12 @@ public class Main {
                 "arielo.mpa"
         );
 
+        Cuenta cuenta3 = new CuentaAhorro("Ariel", "123", "ariel");
+        Cuenta cuenta4 = new CuentaAhorro("Mateo", "123", "mateo");
+
+        System.out.println(cuenta3.equals(cuenta4));
+        System.out.println(cuenta3.hashCode() == cuenta4.hashCode());
+
         Banco banco = new Banco();
 
         banco.registrarCuenta(cuenta1);
@@ -23,7 +32,7 @@ public class Main {
         } catch (CvuDuplicadoException e) {
             System.out.println("No se pudo registrar la cuenta: " + e.getMessage());
         }
-        banco.registrarCuenta(cuenta2);
+        banco.registrarCuenta(cuenta4);
 
         cuenta1.depositar(10000);
         System.out.println(cuenta1.consultarSaldo());
@@ -40,15 +49,15 @@ public class Main {
         System.out.println(cuenta1.consultarSaldo());
 
 
-        cuenta2.depositar(10000);
+        cuenta4.depositar(10000);
         System.out.println(cuenta1.consultarSaldo());
 
         try {
-            cuenta2.retirar(15000);
+            cuenta4.retirar(15000);
         } catch (SaldoInsuficienteException e) {
             System.out.println("No se pudo realizar el retiro: " + e.getMessage());
         }
-        System.out.println(cuenta2.consultarSaldo());
+        System.out.println(cuenta4.consultarSaldo());
 
         System.out.println(TipoMovimiento.RETIRO.getDescripcion());
 
@@ -57,6 +66,13 @@ public class Main {
         for (Movimiento movimiento: cuenta1.getMovimientos()) {
             System.out.println(movimiento);
         }
+
+        Set<Cuenta> cuentas = new HashSet<>();
+
+        cuentas.add(cuenta3);
+        cuentas.add(cuenta4);
+
+        System.out.println(cuentas.size()); 
 
     }
 
