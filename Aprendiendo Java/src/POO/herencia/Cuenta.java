@@ -53,6 +53,10 @@ public abstract class Cuenta implements Transferible {
         return duenio;
     }
 
+    public double getSaldo() {
+        return saldo;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

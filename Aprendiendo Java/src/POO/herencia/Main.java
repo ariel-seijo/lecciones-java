@@ -72,12 +72,25 @@ public class Main {
         cuentas.add(cuenta3);
         cuentas.add(cuenta4);
 
-        System.out.println(cuentas.size()); 
+        System.out.println(cuentas.size());
 
+        OperacionCuenta imprimirSaldo = cuenta -> System.out.println(cuenta.getSaldo());
+        OperacionCuenta imprimirCvu = cuenta -> System.out.println(cuenta.getCvu());
+        OperacionCuenta imprimirMovimientos = cuenta -> System.out.println(cuenta.getMovimientos());
+
+        ejecutarOperacion(cuenta1, imprimirSaldo);
+        ejecutarOperacion(cuenta1, imprimirCvu);
+        ejecutarOperacion(cuenta1, imprimirMovimientos);
     }
 
     public static void procesarRetiro(Cuenta cuenta) {
         cuenta.retirar(300);
+    }
+
+    public static void ejecutarOperacion(
+            Cuenta cuenta,
+            OperacionCuenta operacion) {
+        operacion.operar(cuenta);
     }
 
 }
