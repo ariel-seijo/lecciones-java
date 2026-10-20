@@ -25,4 +25,15 @@ public class CuentaAhorroTest {
         assertEquals(500, cuenta.getSaldo());
     }
 
+    @Test
+    void depositar_conMontoNegativo_lanzaExcepcion(){
+        Cuenta cuenta = new CuentaAhorro("Ariel", "123456", "ariel.prueba");
+        cuenta.depositar(500);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> cuenta.depositar(-200)
+        );
+        assertEquals(1, cuenta.getMovimientos().size());
+    }
+
 }

@@ -31,6 +31,9 @@ public abstract class Cuenta implements Transferible {
     }
 
     public void depositar(double monto) {
+        if (monto <= 0) {
+            throw new IllegalArgumentException("El monto debe ser positivo.");
+        }
         saldo += monto;
         agregarMovimiento(TipoMovimiento.DEPOSITO, monto);
     }
