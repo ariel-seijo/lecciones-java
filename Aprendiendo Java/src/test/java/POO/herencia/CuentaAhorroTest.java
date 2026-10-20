@@ -2,6 +2,9 @@ package POO.herencia;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -30,12 +33,14 @@ public class CuentaAhorroTest {
         assertEquals(500, cuenta.getSaldo());
     }
 
-    @Test
-    void depositar_conMontoNegativo_lanzaExcepcion(){
+    @ParameterizedTest
+    @ValueSource(doubles = {-200, 0})
+    void depositar_conMontoInvalido_lanzaExcepcion(double monto){
         assertThrows(
                 IllegalArgumentException.class,
-                () -> cuenta.depositar(-200)
+                () -> cuenta.depositar(monto)
         );
+        assertEquals(500, cuenta.getSaldo());
         assertEquals(1, cuenta.getMovimientos().size());
     }
 
