@@ -1,5 +1,8 @@
 package POO.herencia;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -41,6 +44,16 @@ public class Main {
                 .toList();
 
         System.out.println(retiros);
+
+        ConexionDB db = new ConexionDB();
+
+        try (Connection conexion = db.conectar()) {
+            System.out.println("¡Conexión exitosa!");
+            System.out.println("¿Está abierta? " + !conexion.isClosed());
+        } catch (SQLException e) {
+            System.out.println("No se pudo conectar a la base de datos.");
+            e.printStackTrace();
+        }
     }
 
     public static void procesarRetiro(Cuenta cuenta) {
@@ -52,5 +65,6 @@ public class Main {
             OperacionCuenta operacion) {
         operacion.operar(cuenta);
     }
+
 
 }
