@@ -19,18 +19,20 @@ public class CuentaAhorroTest {
     }
 
     @Test
-    void retirar_conSaldoSuficiente_actualizaSaldo(){
+    void retirar_conSaldoSuficiente_actualizaSaldoYRegistraMovimiento(){
         cuenta.retirar(200);
         assertEquals(300, cuenta.consultarSaldo());
+        assertEquals(2, cuenta.getMovimientos().size());
     }
 
     @Test
-    void retirar_conSaldoInsuficiente_lanzaExcepcion(){
+    void retirar_conSaldoInsuficiente_lanzaExcepcionYNoRegistraMovimiento(){
         assertThrows(
                 SaldoInsuficienteException.class,
                 () -> cuenta.retirar(700)
         );
         assertEquals(500, cuenta.getSaldo());
+        assertEquals(1, cuenta.getMovimientos().size());
     }
 
     @Test
