@@ -1,12 +1,11 @@
 package POO.herencia;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Main {
 
@@ -46,14 +45,29 @@ public class Main {
         System.out.println(retiros);
 
         ConexionDB db = new ConexionDB();
+        String sql = "SELECT titular, cvu, saldo FROM dbo.cuentas";
 
-        try (Connection conexion = db.conectar()) {
-            System.out.println("¡Conexión exitosa!");
-            System.out.println("¿Está abierta? " + !conexion.isClosed());
+        try (
+                Connection conexion = db.conectar();
+                PreparedStatement sentencia = conexion.prepareStatement(sql);
+                ResultSet resultado = sentencia.executeQuery()
+        ) {
+
+            while (resultado.next()) {
+                System.out.println(resultado.getString("titular"));
+                System.out.println(resultado.getString("cvu"));
+                System.out.println(resultado.getBigDecimal("saldo"));
+            }
+
         } catch (SQLException e) {
-            System.out.println("No se pudo conectar a la base de datos.");
+            System.out.println("Ocurrió un error al consultar la base de datos.");
             e.printStackTrace();
         }
+
+
+
+
+
     }
 
     public static void procesarRetiro(Cuenta cuenta) {
