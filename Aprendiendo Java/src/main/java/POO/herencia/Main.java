@@ -45,20 +45,22 @@ public class Main {
         System.out.println(retiros);
 
         ConexionDB db = new ConexionDB();
-        String sql = "SELECT titular, cvu, saldo FROM dbo.cuentas";
-
+        String sql = "SELECT titular, cvu, saldo FROM dbo.cuentas WHERE cvu = ?";
+        String cvu = "1234567890123456789012";
+        
         try (
                 Connection conexion = db.conectar();
                 PreparedStatement sentencia = conexion.prepareStatement(sql);
-                ResultSet resultado = sentencia.executeQuery()
         ) {
+            sentencia.setString(1, cvu);
 
-            while (resultado.next()) {
-                System.out.println(resultado.getString("titular"));
-                System.out.println(resultado.getString("cvu"));
-                System.out.println(resultado.getBigDecimal("saldo"));
+            try (ResultSet resultado = sentencia.executeQuery();) {
+                while (resultado.next()) {
+                    System.out.println(resultado.getString("titular"));
+                    System.out.println(resultado.getString("cvu"));
+                    System.out.println(resultado.getBigDecimal("saldo"));
+                }
             }
-
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al consultar la base de datos.");
             e.printStackTrace();
